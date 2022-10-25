@@ -6,7 +6,7 @@ import shutil
 import os 
 import datetime
 
-# 需要获取ip的网址
+# 需要获取 ip 的网址
 
 sites =[ 
 	"github.com",
@@ -26,7 +26,7 @@ sites =[
 	
 addr2ip = {}
 
-#获取网址的ip
+#获取网址的 ip
 
 def getIp(siteAdd):
 	
@@ -71,27 +71,27 @@ def chachong(line):
 	return flag 
 	
 
-# 更新host, 并刷新本地DNS
+# 更新 host, 并刷新本地 DNS
 
 def updateHost():
 	generateDict()
 	today = datetime.date.today()
 	hostLocation = "C:\Windows\System32\drivers\etc\hosts"
-	shutil.copy("C:\Windows\System32\drivers\etc\hosts", "C:\Windows\System32\drivers\etc\hosts.bak") # 做一份host备份
+	shutil.copy("C:\Windows\System32\drivers\etc\hosts", "C:\Windows\System32\drivers\etc\hosts.bak") # 做一份 host 备份
 	f1 = open("C:\Windows\System32\drivers\etc\hosts", "r")
 	lines = f1.readlines()
 	f2 = open("temphost", "w")
 	
-	for line in lines:                       # 为了防止host越写用越长，需要删除之前更新的含有github相关内容
+	for line in lines:                       # 为了防止 host 越写用越长，需要删除之前更新的含有 github 相关内容
 		if chachong(line) == False:
 			f2.write(line)
-	f2.write("\n\n #*********************github "+str(today) +" 更新********************\n")
+	f2.write("\n\n #********************* github " + str(today) + " update ********************\n")
 	for key in addr2ip:
 		f2.write(addr2ip[key]+"\t"+key+"\n")
 	f1.close()
 	f2.close()
 	
-	shutil.copy("./temphost", "C:\Windows\System32\drivers\etc\hosts") #覆盖原来的host
+	shutil.copy("./temphost", "C:\Windows\System32\drivers\etc\hosts") #覆盖原来的 host
 	os.system("ipconfig /flushdns")
 	
 updateHost()	
