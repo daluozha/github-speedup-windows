@@ -80,14 +80,13 @@ def updateHost():
     hostLocation = "C:\Windows\System32\drivers\etc\hosts"
     shutil.copy("C:\Windows\System32\drivers\etc\hosts",
                 "C:\Windows\System32\drivers\etc\hosts.bak")  # 做一份 host 备份
-    f1 = open("C:\Windows\System32\drivers\etc\hosts", "r")
+    f1 = open("C:\Windows\System32\drivers\etc\hosts", "r", encoding='UTF-8')
     lines = f1.readlines()
-    f2 = open("temphost", "w")
-
+    f2 = open("temphost", "w", encoding='UTF-8')
     for line in lines:                       # 为了防止 host 越写用越长，需要删除之前更新的含有 github 相关内容
         if chachong(line) == False:
             f2.write(line)
-    f2.write("\n\n #********************* github " +
+    f2.write("\n\n # ********************* github " +
              str(today) + " update ********************\n")
     for key in addr2ip:
         f2.write(addr2ip[key]+"\t" + key + "\n")
