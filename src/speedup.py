@@ -20,7 +20,7 @@ sites = [
     "raw.githubusercontent.com",
     "status.github.com",
     "training.github.com",
-    "ithubusercontent.com",
+    "githubusercontent.com",
     "avatars1.githubusercontent.com",
     "codeload.github.com"
 ]
