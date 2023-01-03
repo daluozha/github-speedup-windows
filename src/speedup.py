@@ -60,7 +60,7 @@ def generateDict():
         ip = getIp(site)
         if ip != None:
             addr2ip[site] = ip
-            print(site+"\t"+ip)
+            print(site + "\t" + ip)
 
 
 def chachong(line):
@@ -90,7 +90,7 @@ def updateHost():
     f2.write("\n\n # ********************* github " +
              str(today) + " update ********************\n")
     for key in addr2ip:
-        f2.write(addr2ip[key]+"\t" + key + "\n")
+        f2.write(addr2ip[key] + "  " + "\t" + key + "\n")
     f1.close()
     f2.close()
     
